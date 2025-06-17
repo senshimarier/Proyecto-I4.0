@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Document, Types, Schema, model } from "mongoose";
 
 export interface IUser extends Document {
@@ -55,6 +56,9 @@ const userSchema = new Schema<IUser>({
 });
 
 =======
+=======
+
+>>>>>>> b9757a5b (Clase 17-06-25)
 import { Document, Types, Schema, model } from "mongoose";
 
 export interface IUser extends Document {
@@ -65,7 +69,7 @@ export interface IUser extends Document {
     status: boolean;
     createDate: Date;
     deleteDate: Date;
-    role: string;
+    role: string[]; // <-- CAMBIO: De string a un arreglo de strings
     firstName: string;
     lastName: string;
 }
@@ -89,7 +93,7 @@ const userSchema = new Schema<IUser>({
         type: Boolean,
         default: true,
     },
-    createDate: {  // Corrección de la capitalización
+    createDate: {
         type: Date,
         default: Date.now,
     },
@@ -97,7 +101,7 @@ const userSchema = new Schema<IUser>({
         type: Date,
     },
     role: {
-        type: String,
+        type: [String], // <-- CAMBIO: El tipo ahora es un arreglo de String
         required: true,
     },
     firstName: {

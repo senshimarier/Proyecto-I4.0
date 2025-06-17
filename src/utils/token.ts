@@ -36,19 +36,19 @@ export const verifyOurToken = (token: string) => {
 };
 =======
 import jwt from "jsonwebtoken";
-import { cache } from "./cache"; // Importa la caché compartida
+import { cache } from "./cache";
 
 const ACCESS_SECRET = process.env.JWT_SECRET || "secret1234utd";
 
-// ✅ Nueva versión: Generar token con payload completo
-export const generateAccessToken = (payload: { userId: string, username: string, role: string }) => {
+// ✅ CAMBIO: El payload ahora espera un arreglo de strings para 'role'
+export const generateAccessToken = (payload: { userId: string, username: string, role: string[] }) => {
     return jwt.sign(payload, ACCESS_SECRET, { expiresIn: "15m" });
 };
 
-// ✅ Método para verificar token
+// ✅ CAMBIO: La verificación ahora decodifica 'role' como un arreglo de strings
 export const verifyOurToken = (token: string) => {
     try {
-        const decoded = jwt.verify(token, ACCESS_SECRET) as { userId: string, username: string, role: string };
+        const decoded = jwt.verify(token, ACCESS_SECRET) as { userId: string, username: string, role: string[] };
 
         // Verificar que esté en caché
         const cachedToken = cache.get(decoded.userId);
@@ -69,5 +69,9 @@ export const verifyOurToken = (token: string) => {
             message: "Token inválido: " + error.message
         };
     }
+<<<<<<< HEAD
 };
 >>>>>>> 9635b2c (Primer commit)
+=======
+};
+>>>>>>> b9757a5b (Clase 17-06-25)
