@@ -1,9 +1,6 @@
-// src/App.tsx
 
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-// 1. Importa el Dashboard y TODAS las páginas que irán dentro de él
 import Dashboard from './modules/Dashboard';
 import HomePage from './modules/home/HomePage';
 import UserForm from './modules/user/User_Form';
